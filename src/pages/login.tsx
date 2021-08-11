@@ -20,28 +20,28 @@ class Login extends Component <any,any>{
 
       if(this.state.username===""){
          formIsValid = false;
-         errors = "Cannot be empty";
+         errors["username"] = "Cannot be empty";
       }
       if(this.state.username!=="undefined"){
           const exp = new RegExp("^[a-zA-Z_]*$");
           if(!exp.test(this.state.username)){
               formIsValid = false;
-              errors = "invalid username(only alphabate allowed)"
+              errors["username"] = "invalid username(only alphabate allowed)"
           }
       }
       if(this.state.password===""){
           formIsValid = false;
-          errors = "Cannot be empty";
+          errors["password"] = "Cannot be empty";
        }
        if(this.state.password!=="undefined"){
            if(this.state.password.length < 8){
                formIsValid = false;
-               errors = "lenght of password is 8 characters" 
+               errors["password"] = "lenght of password is 8 characters" 
            }
            else if(!exp.test(this.state.password)){
                console.log("inside exp",this.state.password)
                 formIsValid = false;
-                errors = "invalid password(no space/special character allow in password)"
+                errors["password"] = "invalid password(no space/special character allow in password)"
            }
        }
 
