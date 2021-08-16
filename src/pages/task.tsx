@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Navigation from '../components/navigation.component';
 
 class Task extends Component <any,any>{
-    constructor(props: {} | Readonly<{}>){
+    constructor(props: Record<string,unknown> | Readonly<Record<string,unknown>>){
         super(props);
         this.state ={
             name: "",
@@ -18,7 +18,7 @@ class Task extends Component <any,any>{
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
-    handleValidation(e: { preventDefault: () => void; }){
+    handleValidation(e: { preventDefault: () => void; }): void {
 
         e.preventDefault()
           let errors = {};
@@ -51,9 +51,9 @@ class Task extends Component <any,any>{
          }
       }
 
-      handleSubmit = (e: { preventDefault: () => void; }) => {
+      handleSubmit = (e: { preventDefault: () => void; }):void => {
         e.preventDefault()
-          let data = 
+          const data = 
               {
               name: this.state.name,
               description: this.state.description,

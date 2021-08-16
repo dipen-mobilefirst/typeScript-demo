@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {login} from '../utils';
 
 class Login extends Component <any,any>{
-    constructor(props: {} | Readonly<{}>){
+    constructor(props: Record<string,unknown> | Readonly<Record<string,unknown>>){
         super(props);
         this.state ={
             username: "",
@@ -14,9 +14,9 @@ class Login extends Component <any,any>{
     }
     handleValidation(e: { preventDefault: () => void; }){
     e.preventDefault()
-      let errors = {};
+      const errors = {};
       let formIsValid = true;
-      let exp = new RegExp( "^[a-zA-Z0-9_]*$")
+      const exp = new RegExp( "^[a-zA-Z0-9_]*$")
 
       if(this.state.username===""){
          formIsValid = false;

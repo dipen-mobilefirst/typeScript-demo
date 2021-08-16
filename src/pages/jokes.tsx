@@ -4,8 +4,17 @@ import '../App.css';
 import axios from 'axios';
 import Loader from 'react-loader-spinner';
 
-class Jokes extends Component <any,any>{
-    constructor(props: {} | Readonly<{}>){
+interface IProps {
+
+}
+
+interface IState {
+    data?: []
+    isLoading?: boolean;
+}
+
+class Jokes extends Component <IProps,IState>{
+    constructor(props: IProps){
         super(props);
         this.state = {
             data: [],
@@ -17,7 +26,7 @@ class Jokes extends Component <any,any>{
         setTimeout(() => {
             axios.get("https://official-joke-api.appspot.com/jokes/ten")
         .then(res => {
-            let Data = res.data;
+            const Data = res.data;
             this.setState({data: Data, isLoading:false})
         })
         }, 1000);
@@ -44,7 +53,7 @@ class Jokes extends Component <any,any>{
                     <div className="row">
                         <div className="col">
                             {
-                                this.state.data.map((item: { id: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; type: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; setup: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; punchline: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; },index: React.Key | null | undefined)=>{
+                                this.state.data?.map((item: { id: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; type: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; setup: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; punchline: boolean | React.ReactChild | React.ReactFragment | React.ReactPortal | null | undefined; },index: React.Key | null | undefined)=>{
                                     return(
                                         <div key={index} >
                                         <div className="card" style={{boxShadow:"0 4px 8px 0 rgba(0,0,0,0.2)",transition: "0.3s", textAlign:"center"}}>
